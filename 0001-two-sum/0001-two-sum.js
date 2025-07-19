@@ -3,19 +3,18 @@
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = (nums, target) => {
-    const newMap = new Map()
+var twoSum = function(nums, target) {
+    const map = new Map();
 
-    for (let i = 0; i < nums.length; i++) {
-        const num = nums[i]
-        const complement = target - num;
-        const sumIndex = newMap.get(complement)
+    for(let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        const diff = target - num;
+        const hasDiff = map.has(diff);
 
-        const isTarget = newMap.has(complement)
-        if (isTarget) {
-            return [i, sumIndex]
+        if(hasDiff) {
+            return [map.get(diff), i]
         }
-        newMap.set(num, i)
-    }
-    return [-1, -1]
-}
+
+        map.set(num, i)
+    }    
+};
