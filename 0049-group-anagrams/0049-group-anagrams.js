@@ -3,19 +3,16 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    const ans = {}
+    const result = {};
 
-    for (const s of strs) {
-        const count = Array(26).fill(0)
-        for (const c of s) {
-            count[c.charCodeAt(0) - "a".charCodeAt(0)]++
-        }
-        const key = count.join("#")
-        if(!ans[key]){
-            ans[key] = []
-        }
+    for(const s of strs) {
+        const sortedStr = s.split("").sort().join("");
+        if(!result[sortedStr]) {
+            result[sortedStr] = [];
+        };
 
-        ans[key].push(s)
+        result[sortedStr].push(s)
     }
-    return Object.values(ans)
+
+    return Object.values(result);
 };
